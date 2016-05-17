@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/coordinatorLayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<android.support.design.widget.AppBarLayout
+    android:id="@+id/appBarLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/trip_toolbar"/>
+
+</android.support.design.widget.AppBarLayout>
+
+
+    <!--<ExpandableListView-->
+        <!--android:id="@+id/trip_buses_expandable_listview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:divider="@color/activity_background_light_grey"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginLeft="8dp"-->
+        <!--android:layout_marginRight="8dp"-->
+        <!--android:dividerHeight="5dp"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--android:layout_height="fill_parent" >-->
+    <!--</ExpandableListView>-->
+
+    <include layout="@layout/content_trip" />
+</android.support.design.widget.CoordinatorLayout>
+

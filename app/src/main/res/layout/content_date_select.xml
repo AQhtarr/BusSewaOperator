@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.diyalotech.bussewaoperator.Activities.DateSelectActivity"
+    tools:showIn="@layout/activity_date_select">
+
+    <com.diyalotech.bussewaoperator.AppUtils.RippleView
+        android:id="@+id/journey_date_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/primaryColor"
+        android:orientation="vertical"
+        app:rv_color="@color/primaryColor"
+        app:rv_rippleDuration="500"
+        app:rv_zoom="true"
+        app:rv_zoomDuration="100"
+        app:rv_zoomScale="1.2">
+
+        <LinearLayout
+            android:id="@+id/ll_journey_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/journey_day_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+
+                android:padding="8dp"
+                android:text="Click here to select date"
+                android:textColor="@color/pure_white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/journey_day_tag"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="23nd March 2015"
+                android:textColor="@color/pure_white"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+    </com.diyalotech.bussewaoperator.AppUtils.RippleView>
+
+    <Button
+        android:id="@+id/get_my_trips_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/shadw_button"
+        android:text="Get My Bus(s)"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -1,0 +1,765 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pure_white"
+    android:orientation="vertical"
+    tools:context="com.diyalo.bussewa.Activities.LightVehicleActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/indexparent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/tagparent_ticket1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/index_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ticket_seat_and_amount"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:id="@+id/seat_selection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/seat_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Seat(s) Selected:  "
+                            android:textColor="@color/dark_blue"
+                            android:visibility="visible" />
+
+
+                        <TextView
+                            android:id="@+id/selected_seats"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="12345"
+                            android:textStyle="italic"
+                            android:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/seat_selection"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/amount_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Amount:  "
+                            android:textColor="@color/dark_blue"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/rs_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nrs "
+                            android:visibility="visible" />
+
+
+                        <TextView
+                            android:id="@+id/ticket_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2000"
+                            android:textColor="@color/dark_blue"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/availabe_seat_icon_index" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Available Seats"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/booked_seat_icon_index" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Booked Seats"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:src="@drawable/selected_seat_icon_index" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Selected Seat"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/confirm_booking_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:background="@color/primaryColor"
+        android:onClick="onSubmitClicked"
+        android:text="Continue Booking"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/confirm_booking_button"
+        android:layout_below="@+id/indexparent_layout">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/pure_white"
+            android:longClickable="false"
+            android:paddingTop="30dp">
+
+            <RelativeLayout
+                android:id="@+id/imagebutton_relativelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/pure_white">
+
+                <ImageButton
+                    android:id="@+id/A2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@id/A2"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@id/A2"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A2"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A2"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A2"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@id/A4"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A2"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@id/A4"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/A3"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@+id/A3"
+                    android:src="@drawable/bus_handle" />
+
+
+                <ImageButton
+                    android:id="@+id/A6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A4"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A4"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A3"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toEndOf="@+id/B5"
+                    android:layout_toRightOf="@+id/A6"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A3"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A6"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A1"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@+id/A7"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A1"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A7"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A1"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@id/B3"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/A1"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@id/B3"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A6"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A6"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A6"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toEndOf="@+id/A6"
+                    android:layout_toRightOf="@+id/A6"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A6"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A6"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/B3"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@+id/A7"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/B3"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A7"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/B4"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@id/B5"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/B4"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@id/B5"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/A8"
+                    android:layout_alignStart="@+id/A8"
+                    android:layout_alignTop="@+id/B9"
+                    android:visibility="visible"
+
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A8"
+                    android:visibility="visible"
+
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A7"
+                    android:layout_toEndOf="@+id/A10"
+                    android:visibility="visible"
+                    android:layout_toRightOf="@+id/A10"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A8"
+                    android:layout_marginLeft="19dp"
+                    android:visibility="visible"
+
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A10"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/B5"
+                    android:layout_toRightOf="@+id/A7"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A6"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A5"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/B6"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@id/B7"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A6"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/B7"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/A10"
+                    android:visibility="visible"
+
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A10"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:visibility="visible"
+
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/A11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A9"
+                    android:visibility="visible"
+
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toRightOf="@+id/A12"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_A11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A10"
+                    android:layout_marginLeft="19dp"
+                    android:visibility="visible"
+
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A12"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/B7"
+                    android:layout_alignStart="@+id/B7"
+                    android:layout_below="@+id/B7"
+                    android:visibility="visible"
+
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A8"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A9"
+                    android:visibility="visible"
+
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/B7"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toEndOf="@+id/B7"
+                    android:layout_toRightOf="@+id/B7"
+                    android:visibility="visible"
+
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A8"
+                    android:layout_marginLeft="19dp"
+                    android:visibility="visible"
+
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/B9"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+
+                <ImageButton
+                    android:id="@+id/B11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/B9"
+                    android:layout_alignStart="@+id/B9"
+                    android:layout_below="@+id/B10"
+                    android:visibility="visible"
+
+                    android:layout_margin="@dimen/seat_margin"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A10"
+                    android:layout_marginLeft="19dp"
+                    android:visibility="visible"
+
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@+id/A9"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/B12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/B10"
+                    android:layout_margin="@dimen/seat_margin"
+                    android:layout_toEndOf="@+id/B9"
+                    android:layout_toRightOf="@+id/B9"
+                    android:visibility="visible"
+                    android:background="@color/pure_white"
+                    android:clickable="false"
+                    android:src="@drawable/booked_seat" />
+
+                <TextView
+                    android:id="@+id/TextView_B12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/A10"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="9dp"
+                    android:visibility="visible"
+                    android:layout_toRightOf="@+id/B9"
+                    android:text="C1"
+                    android:textColor="@color/pure_white"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

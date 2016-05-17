@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.diyalotech.bussewaoperator">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/bus_sewa_logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activities.StarterActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.RegistrationActivity" />
+        <activity android:name=".Activities.TokenValidationActivity" />
+        <activity android:name=".Activities.TripsActivity" />
+        <activity android:name=".Activities.HeavyVehicleActivity" />
+        <activity android:name=".Activities.LightVehicleActivity" />
+        <!--<activity-->
+            <!--android:name=".Activities.DateSelectActivity"-->
+            <!--android:label="@string/title_activity_date_select"-->
+            <!--android:theme="@style/AppTheme"></activity>-->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f345dc3a25a38382a52dea4675ca9ec74b206082" />
+    </application>
+
+</manifest>
